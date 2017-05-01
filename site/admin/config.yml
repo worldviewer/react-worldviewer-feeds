@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: worldviewer/react-worldviewer-feeds
+  branch: master
+  site_domain: controversies-of-science.netlify.com
+
+publish_mode: editorial_workflow
+
+media_folder: "static/images" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/images" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "controversy" # Used in routes, e.g. /admin/collections/blog
+    label: "Controversy" # Used in the UI
+    folder: "site/content/controversy" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template i.e. YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Controversy", name: "controversy", widget: "string", default: "Halton Arp, the Modern Galileo"}
+      - {label: "Discourse Level", name: "discourse_level", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Last Modification Date", name: "date", widget: "datetime"}
+      - {label: "Github Project URL", name: "project_url", widget: "string"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+taxonomies:
+  - category: "categories"
+
